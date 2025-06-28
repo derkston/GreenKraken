@@ -1,0 +1,44 @@
+.basket__icon {
+    transition: all 1s forwards;
+    cursor: pointer;
+}
+.basket__icon:hover  , .basket__icon:hover path {
+    fill : var(--black);
+}
+
+.basket {
+    display: flex;
+    gap: .2rem;
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: rgba(241, 245, 249, 1);
+    padding: 3rem ;
+    animation: show 1s forwards;
+}
+@keyframes show {
+    0% {
+        right: -100%;
+    }
+    100% {
+        right: 0;
+    }
+    
+}
+.close {
+    transition: all 1s forwards;
+    cursor: pointer;
+}
+.close svg {
+    width: 2rem;
+    height: 2rem;
+    fill : var(--grey);
+}
+.close svg path {
+    fill: var(--grey);
+}
+.close svg:hover  , .close svg:hover path {
+    fill : var(--black);
+}

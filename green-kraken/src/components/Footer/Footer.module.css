@@ -1,0 +1,23 @@
+.footer__content ul {
+    list-style-type: none;
+}
+.footer__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer__list ul  {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.footer__list li  {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: 1rem;
+}
+.footer__list a {
+    font-size: 1rem;
+}
