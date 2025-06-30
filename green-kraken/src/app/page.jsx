@@ -1,9 +1,13 @@
+
 import { Container } from '../ui/Container/Container'
 import style from './home.module.css'
 import Image from 'next/image'
 import preview from '../../public/preview.jpg'
+
 export default function Page(){
+    console.log(newProducts)
     return <main>
+        
         <section className={style.preview}>
             <Container>
                 <div className={style.section__content}>

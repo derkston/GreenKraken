@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import { Container } from '../../../ui/Container/Container'
 import style from './AddProduct.module.css'
-import { ConversionLocal, getProductLocal, handleSubmitForm } from '../../../services/AddProduct/AddProduct';
+import {  deleteProduct, getAllProductQuantity, getProductLocal, handleSubmitForm } from '../../../services/AddProduct/AddProduct';
+import { CodeItem } from '../../../ui/CodeItem/Code';
 
 
 
@@ -14,46 +15,50 @@ import { ConversionLocal, getProductLocal, handleSubmitForm } from '../../../ser
 
 export default function AddProduct(){
     const [products , setProducts] = useState(getProductLocal());
-    
-    
-    function deleteProduct(e , product){
-        e.preventDefault()
-        console.log(getProductLocal().filter(e => e.id != product.id))
-        localStorage.setItem('products' , ConversionLocal(getProductLocal().filter(e => e.id != product.id)))
-        setProducts(getProductLocal())
-    }
-    
-    function ProductItem({product}){
-        return <li className={style.product}>
-            <h3>Название: {product.name} </h3>
-            <p><span>Номер: <b>{product.id}</b></span> <span>Количество: <b>{product.quantity}</b></span></p>
-            <div className={style.product__buttons}>
-                <button onClick={e => deleteProduct(e , product)}>Удалить продукт</button>
-                <button>Редактировать товар</button>
-            </div>
-        </li>
-    }
-    
-
     return <main>
         <Container>
             <section className={style.products}>
                 <div className={style.products__form}>
                     <h2>Добавьте  продукт</h2>
                     <form  onSubmit={(e) => handleSubmitForm(e , setProducts)} >
-                        
+                        <input type="text" name='categories' placeholder='Введите категорию' />
                         <input type="text" name='name' placeholder='Введите название' />
+                        
                         <input type="number" name='quantity'placeholder='Введите кол-во' />
                         <input type='number' name='id' placeholder='Укажите id'/>
                         <button type='submit'>Отправить</button>
                     </form>
+                    <CodeItem/>
+                   
                 </div>
-                <div className={style.products__list}>
-                    <h2>Ваши продукты</h2>
-                    <ul>
-                        { products.map(e => <ProductItem key={e.id} product={e}/> )}
-                    </ul>
-                </div>
+        
+                     <table className={style.products__list}>
+                         <caption><h2>Ваши продукты</h2></caption>
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Название</th>
+                                <th>Номер</th>
+                                <th>Количество</th>
+                                <th>Удалить продукт</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products.map(e => {
+                               return <tr key={e.id}>
+                                    <td>{e.categories}</td>
+                                    <td>{e.name}</td>
+                                    <td>{e.id}</td>
+                                    <td>{e.quantity}</td>
+                                    <td>
+                                        <button onClick={event => deleteProduct(event , e , setProducts)}>Удалить продукт</button>
+                                    </td>
+                                </tr>
+                            }) }
+                            <tr className={style.table_quantity}><td>Общее количество товара:<b>{getAllProductQuantity(products)}</b></td></tr>
+                        </tbody>
+                    </table>
+      
             </section>
         </Container>
     </main>
