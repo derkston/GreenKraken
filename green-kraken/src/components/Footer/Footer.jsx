@@ -43,7 +43,7 @@ export default function Footer(){
                         <ul className={style.footer__list_two}>
                             <h3>Служба клиентской поддержки</h3>
                             <li className={style.footer__list_two_item}>
-                                    <Link href='email:stepaarkadevich2019@gmail.com'>stepaarkadevich2019@gmail.com</Link>
+                                    <Link href='mailto:stepaarkadevich2019@gmail.com'>stepaarkadevich2019@gmail.com</Link>
                                     <Link href='tel:89089078760'>89089078760</Link>
                             </li>
                             <li className={style.footer__list_two_item}>

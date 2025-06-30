@@ -26,5 +26,10 @@ export default function Navigation(){
           href='/About'
          >
         О нас</Link>
+        <Link
+         className={pathname == '/AddProduct' ? 'active' : ''}
+          href='/AddProduct'
+         >
+        Добавить продукт</Link>
     </nav>
 }

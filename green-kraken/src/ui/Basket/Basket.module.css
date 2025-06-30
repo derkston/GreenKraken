@@ -1,8 +1,25 @@
 .basket__icon {
+    position: relative;
+}
+.basket__counter {
+   
+    background-color: var(--grey);
+    color: var(--white);
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    right: -50%;
+    padding: 0px .2rem;
+}
+.basket__icon_svg {
     transition: all 1s forwards;
     cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
 }
-.basket__icon:hover  , .basket__icon:hover path {
+.basket__icon_svg:hover  , .basket__icon_svg:hover path {
     fill : var(--black);
 }
 

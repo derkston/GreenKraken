@@ -18,6 +18,14 @@
     gap: .5rem;
     font-size: 1rem;
 }
-.footer__list a {
-    font-size: 1rem;
+
+@media (max-width : 500px) {
+    .footer__list ul  , .footer__list li{
+        gap: 2rem;
+    }
+    .footer__list ul , .footer__list li {
+        padding: 0;
+        width: 45%;
+       
+    }
 }
